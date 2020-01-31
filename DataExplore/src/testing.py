@@ -11,11 +11,6 @@ for line in open(filename, 'r'):
 
     data.append(json.loads(line))
 
-print (data)
-
-def bigram(data):
-    
-
 
 
 def totalRecords(data):
@@ -182,4 +177,4 @@ def pop(data):
 # types(data)
 # nameCount(data, entity_type)
 # spread(data)
-# pop(data)
+pop(data)
