@@ -9,16 +9,18 @@ for line in open(filename, 'r'):
 
 
 def singleLaver(data):
-    data= data[0:1]
+    data= data[5:6]
     nodes = []
     struct = []
-    mnet = MultilayerNetwork(aspects=1,fullyInterconnected=False)
+    mnet = MultilayerNetwork(aspects= 1, fullyInterconnected=False)
     for i in data:
 
         d=i['entities']
 
+        # for i in range(len(d)):
+        #     if d[i]['type']== 'person':
+        #         nodes.append(d[i])
         for i in range(len(d)):
-
             nodes.append(d[i])
             #print(d[i])
 
@@ -43,18 +45,19 @@ def singleLaver(data):
 
 
 
-    print(data[0:1])
-    print (struct)
+
+    print(data[0]['entities'])
     for i in struct:
         mnet[i[0],i[1],i[2],i[3]] =1
-    fig = draw(mnet, show=True)
+    fig = draw(mnet, show=True, layout= 'spring')
+
     #fig = draw(er(50,3*[0.9]), show=True)
     #fig = webplot(er(50,3*[0.9]),outputfile=None)
 
 
-#singleLaver(data)
+singleLaver(data)
 
-mnet = MultilayerNetwork(aspects=1)
-mnet['sato','tanaka','work','work'] = 1
-mnet['sato','3','work','new'] = 1
-fig=draw(mnet, show=True, layout='spring')
+# mnet = MultilayerNetwork(aspects=1,fullyInterconnected=False)
+# mnet['sato','tanaka','work','work'] = 1
+# mnet['sato','3','work','new'] = 1
+# fig=draw(mnet, show=True, layout='spring')
