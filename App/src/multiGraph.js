@@ -9,6 +9,7 @@ var svg_layer=[];
 var node_layer=[];
 var link_layer=[];
 var layer_label=[];
+var intra_svg = []
 var intra_link = [];
 
 // Calculate size for the figure
@@ -24,15 +25,9 @@ var force = d3.layout.force()
                      .links(mpnet.links)
                      .start();
 
-               
-
-            
-
 
     var nlayers=mpnet.layers.length;
     for (var layer=nlayers-1;layer>=0;layer--){
-
-        console.log(svg_layer)
         svg_layer[layer] = d3.select("body").append("svg")
                            .attr("layer",0)
                            .style("position","absolute")
@@ -88,19 +83,38 @@ var force = d3.layout.force()
         
     }
     
-    // var nlinks = mpnet.links.length;
-    // var count = 0;
+    var nlinks = mpnet.links.length;
+    var count = 0;
+
+    
+
     // for (var elm=nlinks-1;elm>=0;elm--){
     //     if (!(mpnet.links[elm].layer === mpnet.links[elm].layer_to)){
 
+    //         // intra_svg[elm] = d3.select("body")
+    //         //                 .append("svg")
+    //         console.log(mpnet.links[elm])
             
-    //         intra_link[count] = svg.append("line")
-    //         .data(mpnet.links[elm])
-    //         .style("stroke", "gray") 
-    //         .attr("x1", function(d) { return d.source.x; })
-    //         .attr("y1", function(d) { return d.source.y; })
-    //         .attr("x2", function(d) { return d.target.x; })
-    //         .attr("y2", function(d) { return d.target.y; });
+    //         intra_svg[count]= d3.select("body")
+    //                             .style("position","absolute")
+    //                             .append('svg')
+    //                             .append('circle')
+    //                             .style('fill', 'red')
+    //                             .attr("cx", mpnet.links[elm].source.x)
+    //                             .attr("cy", mpnet.links[elm].source.y)
+    //                             .attr("r", 20);
+
+
+
+    //         // intra_link[count] = intra_svg[count].selectAll('.link')
+    //         // .data(mpnet.links[elm])
+    //         // .enter()
+    //         // .append("line")
+    //         // .style("stroke", "gray") 
+    //         // .attr("x1", function(d) { return d.source.x; })
+    //         // .attr("y1", function(d) { return d.source.y; })
+    //         // .attr("x2", function(d) { return d.target.x; })
+    //         // .attr("y2", function(d) { return d.target.y; });
     //         count++;
 
     //     }
@@ -108,17 +122,11 @@ var force = d3.layout.force()
 
 
 
+
        
 
 
 force.on("tick", function() {
-    // var nelm = intra_link.length;
-    // for (var elm=nelm-1;elm>=0;elm--){
-    //     intra_link[elm].attr("x1", function(d) { return d.source.x; })
-    //     .attr("y1", function(d) { return d.source.y; })
-    //     .attr("x2", function(d) { return d.target.x; })
-    //     .attr("y2", function(d) { return d.target.y; });
-    // }
 
  for (var layer=0;layer<nlayers;layer++){
   link_layer[layer].attr("x1", function(d) { return d.source.x; })
