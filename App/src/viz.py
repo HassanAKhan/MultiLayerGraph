@@ -13,6 +13,7 @@ def singleLayer(data):
     #data= data[9:10]
     #data= data[0:1]
     data= data[0:1]
+    print(data)
     nodes = []
     struct = []
     mnet = MultilayerNetwork(aspects= 1, fullyInterconnected=False)
@@ -54,10 +55,10 @@ def singleLayer(data):
         mnet[i[0],i[1],i[2],i[3]] =1
 
 
-    #fig = draw(mnet, show=True, layout= 'spring')
+    fig = draw(mnet, show=True, layout= 'spring')
 
     #fig = draw(er(50,3*[0.9]), show=True)
-    fig = webplot(mnet,struct ,outputfile=None)
+    #print( webplot(mnet,struct ,outputfile=None, mult_layer=True))
 
 
 singleLayer(data)
